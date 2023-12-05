@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 import { Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 

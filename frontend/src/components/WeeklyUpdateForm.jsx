@@ -9,7 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { useRef, useState } from "react";
 import { Divider, Typography } from "@mui/material";
-import { useUser } from "../context/userContext.jsx";
+import { useUser } from "../context/UserContext.jsx";
 
 export default function WeeklyUpdateForm({ setActivePane }) {
   const weeksToLaunch = useRef(0);
