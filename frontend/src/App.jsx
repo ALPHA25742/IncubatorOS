@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./Dashboard";
-import { useUser } from "./context/userContext.jsx";
+import { useUser } from "./context/UserContext.jsx";
 import Details from "./pages/Details";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 const iosTheme = createTheme({
