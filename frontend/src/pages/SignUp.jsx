@@ -29,8 +29,7 @@ export default function SignUp() {
           }),
         }
       );
-      const res = await existingUserCheck.json();
-      return res;
+      return await existingUserCheck.json();
     } catch (err) {
       if (err.name === "TypeError" || "FetchError" || "SyntaxError") {
         return `fetch error: ${err}`;
