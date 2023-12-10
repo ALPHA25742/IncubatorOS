@@ -48,7 +48,6 @@ const iosTheme = createTheme({
 
 function App() {
   const { user } = useUser();
-  console.log(iosTheme);
   return (
     <ThemeProvider theme={iosTheme}>
       <Routes>

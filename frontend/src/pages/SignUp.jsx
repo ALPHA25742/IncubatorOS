@@ -1,9 +1,7 @@
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { signInWithGoogle } from "../Firebase";
 import { useUser } from "../context/UserContext";
 import { useState } from "react";
@@ -34,7 +32,11 @@ export default function SignUp() {
       const res = await existingUserCheck.json();
       return res;
     } catch (err) {
-      window.alert(err);
+      if (err.name === "TypeError" || "FetchError" || "SyntaxError") {
+        return `fetch error: ${err}`;
+      } else {
+        return `auth error: ${err}`;
+      }
     }
   }
 
@@ -48,6 +50,8 @@ export default function SignUp() {
         ceo: null,
         startup: null,
       });
+    } else if (res.includes("error")) {
+      window.alert(res);
     } else {
       window.alert("u r an existing user, please use signin");
     }
@@ -60,6 +64,8 @@ export default function SignUp() {
     }
     if (res == "proceed") {
       window.alert("u r not an existing user, please use signup");
+    } else if (res.includes("error")) {
+      window.alert(res);
     } else {
       localStorage.setItem("iosUser", JSON.stringify(res));
       setUser(res);
@@ -71,9 +77,7 @@ export default function SignUp() {
     <Box
       sx={{
         height: "100dvh",
-        // margin:0,
-        // padding:0,
-        width:"100%",
+        width: "100%",
         display: "flex",
         alignItems: "center",
         backgroundColor: "background.paper",
@@ -83,7 +87,7 @@ export default function SignUp() {
       <Box
         sx={{
           width: "100%",
-          height:"300px",
+          height: "300px",
           display: "flex",
           flexDirection: "row",
           backgroundColor: "background.default",
@@ -95,14 +99,17 @@ export default function SignUp() {
       >
         <Box m="0 30px">
           <Stack direction="row">
-            <SendIcon fontSize="large" sx={{ transform: 'rotate(-90deg)' }} />
+            <SendIcon fontSize="large" sx={{ transform: "rotate(-90deg)" }} />
             <Typography variant="h3" component="h1">
               EdVenture Park
             </Typography>
           </Stack>
-          <Typography variant="h6" component="h2" align="center">Signup to access Incubator OS</Typography>
+          <Typography variant="h6" component="h2" align="center">
+            Signup to access Incubator OS
+          </Typography>
         </Box>
-        <Box m="0 30px"
+        <Box
+          m="0 30px"
           sx={{
             display: "flex",
             flexDirection: "column",
